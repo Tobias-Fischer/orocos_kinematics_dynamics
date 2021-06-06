@@ -37,7 +37,11 @@ if(catkin_FOUND)
 endif()
 
 # Build the module
-SET(PYTHON_MODULE_EXTENSION ".so")
+if(WIN32)
+  set(PYTHON_MODULE_EXTENSION ".pyd")
+else()
+  set(PYTHON_MODULE_EXTENSION ".so")
+endif()
 find_package(Python COMPONENTS Interpreter Development)
 find_package(pybind11 CONFIG REQUIRED)
 pybind11_add_module(${LIBRARY_NAME}
