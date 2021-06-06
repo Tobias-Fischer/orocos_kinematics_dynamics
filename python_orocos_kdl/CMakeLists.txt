@@ -38,7 +38,8 @@ endif()
 
 # Build the module
 SET(PYTHON_MODULE_EXTENSION ".so")
-add_subdirectory(pybind11)
+find_package(Python COMPONENTS Interpreter Development)
+find_package(pybind11 CONFIG REQUIRED)
 pybind11_add_module(${LIBRARY_NAME}
   PyKDL/PyKDL.h
   PyKDL/PyKDL.cpp
