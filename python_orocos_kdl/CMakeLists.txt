@@ -49,13 +49,8 @@ if(catkin_FOUND)
 endif()
 
 # Build the module
-find_package(pybind11 2.6 QUIET)
-if(NOT ${pybind11_FOUND})
-  message(STATUS "pybind11 not found, building from source")
-  add_subdirectory(pybind11)
-else()
-  message(STATUS "pybind11 found, building against installed version")
-endif()
+find_package(Python COMPONENTS Interpreter Development)
+find_package(pybind11 CONFIG REQUIRED)
 pybind11_add_module(${LIBRARY_NAME}
   PyKDL/PyKDL.h
   PyKDL/PyKDL.cpp
